@@ -26,9 +26,6 @@ jobs:
     name: Lint Code
     runs-on: windows-latest
     steps:
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
       - name: Run linter
         run: pylint model.py
 
