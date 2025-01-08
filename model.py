@@ -12,9 +12,10 @@ def train_model():
     Trains a logistic regression model on the Iris dataset.
     Returns the accuracy of the model on the test data.
     """
-    data = load_iris()
+    iris_data = load_iris()
+    x,y = iris_data.data, iris_data.target
     x_train, x_test, y_train, y_test = train_test_split(
-        data.data, data.target, test_size=0.2, random_state=42)
+        x, y, test_size=0.2, random_state=42)
     model = LogisticRegression(max_iter=200)
     model.fit(x_train, y_train)
     predictions = model.predict(x_test)
