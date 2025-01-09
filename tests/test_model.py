@@ -1,7 +1,11 @@
 """
 This script tests a logistic regression model on the Iris dataset.
 """
+import sys
+import os
 from ..model import train_model
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 def test_train_model():
     """
     Trains a logistic regression model on the Iris dataset.
