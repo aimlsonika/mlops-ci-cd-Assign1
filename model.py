@@ -21,4 +21,4 @@ def train_model():
     return acc
 
 if __name__ == "__main__":
-    print(f"Model Accuracy: {train_model():.2f}")
+    print(f"Model Accuracy: {train_model():.3f}")
