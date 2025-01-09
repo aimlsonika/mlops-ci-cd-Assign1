@@ -1,7 +1,7 @@
-from model import train_model
 """
 This script tests a logistic regression model on the Iris dataset.
 """
+from model import train_model
 def test_train_model():
     """
     Trains a logistic regression model on the Iris dataset.
