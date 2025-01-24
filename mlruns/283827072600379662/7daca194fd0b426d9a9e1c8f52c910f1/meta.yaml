@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/ramsb/MLOps/Assignment1/mlops_ci_cd_assign1/mlruns/283827072600379662/7daca194fd0b426d9a9e1c8f52c910f1/artifacts
+end_time: 1737480150182
+entry_point_name: ''
+experiment_id: '283827072600379662'
+lifecycle_stage: active
+run_id: 7daca194fd0b426d9a9e1c8f52c910f1
+run_name: glamorous-crab-214
+run_uuid: 7daca194fd0b426d9a9e1c8f52c910f1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737480149870
+status: 4
+tags: []
+user_id: ramsb

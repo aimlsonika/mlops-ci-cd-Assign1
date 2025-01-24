@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/ramsb/MLOps/Assignment1/mlops_ci_cd_assign1/mlruns/283827072600379662/a90dd874d2aa4164bdcb50023170814f/artifacts
+end_time: 1737612776916
+entry_point_name: ''
+experiment_id: '283827072600379662'
+lifecycle_stage: active
+run_id: a90dd874d2aa4164bdcb50023170814f
+run_name: unequaled-fly-480
+run_uuid: a90dd874d2aa4164bdcb50023170814f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737612746749
+status: 3
+tags: []
+user_id: ramsb

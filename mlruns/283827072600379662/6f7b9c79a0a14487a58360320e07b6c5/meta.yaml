@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/ramsb/MLOps/Assignment1/mlops_ci_cd_assign1/mlruns/283827072600379662/6f7b9c79a0a14487a58360320e07b6c5/artifacts
+end_time: 1737640740052
+entry_point_name: ''
+experiment_id: '283827072600379662'
+lifecycle_stage: active
+run_id: 6f7b9c79a0a14487a58360320e07b6c5
+run_name: auspicious-boar-916
+run_uuid: 6f7b9c79a0a14487a58360320e07b6c5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737640726914
+status: 4
+tags: []
+user_id: ramsb

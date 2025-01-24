@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/ramsb/MLOps/Assignment1/mlops_ci_cd_assign1/mlruns/283827072600379662/3fefd8c4d6e74e9f9c2fd11e575fcb07/artifacts
+end_time: 1737565285108
+entry_point_name: ''
+experiment_id: '283827072600379662'
+lifecycle_stage: active
+run_id: 3fefd8c4d6e74e9f9c2fd11e575fcb07
+run_name: honorable-hog-310
+run_uuid: 3fefd8c4d6e74e9f9c2fd11e575fcb07
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737565257038
+status: 3
+tags: []
+user_id: ramsb

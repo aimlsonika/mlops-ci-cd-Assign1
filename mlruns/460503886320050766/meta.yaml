@@ -1,0 +1,6 @@
+artifact_location: file:///C:/Users/ramsb/MLOps/Assignment1/mlops_ci_cd_assign1/mlruns/460503886320050766
+creation_time: 1737640814233
+experiment_id: '460503886320050766'
+last_update_time: 1737640814233
+lifecycle_stage: active
+name: Diabetes Prediction with Optuna

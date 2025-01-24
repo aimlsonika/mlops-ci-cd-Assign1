@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/ramsb/MLOps/Assignment1/mlops_ci_cd_assign1/mlruns/460503886320050766/9ab0b67df81a40a89109f3602bf55e1e/artifacts
+end_time: 1737640851477
+entry_point_name: ''
+experiment_id: '460503886320050766'
+lifecycle_stage: active
+run_id: 9ab0b67df81a40a89109f3602bf55e1e
+run_name: respected-bat-769
+run_uuid: 9ab0b67df81a40a89109f3602bf55e1e
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737640817838
+status: 3
+tags: []
+user_id: ramsb

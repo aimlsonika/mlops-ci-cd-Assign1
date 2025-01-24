@@ -52,3 +52,10 @@ jobs:
       - name: Run tests with Pytest
         run: |
           pytest --maxfail=1 --disable-warnings -q  # Run tests using pytest, stop after first failure
+  deploy:
+    runs-on: windows-latest
+    needs: test
+    steps:
+      - name: Deploy the model (Save artifacts or deploy to API)
+        run: |
+          echo "Deploying the model"        

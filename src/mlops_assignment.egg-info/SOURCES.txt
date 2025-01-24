@@ -1,0 +1,6 @@
+setup.py
+src/mlops_assignment.egg-info/PKG-INFO
+src/mlops_assignment.egg-info/SOURCES.txt
+src/mlops_assignment.egg-info/dependency_links.txt
+src/mlops_assignment.egg-info/top_level.txt
+tests/test_model.py

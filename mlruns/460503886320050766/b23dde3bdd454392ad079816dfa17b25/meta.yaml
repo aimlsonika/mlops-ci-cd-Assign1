@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/ramsb/MLOps/Assignment1/mlops_ci_cd_assign1/mlruns/460503886320050766/b23dde3bdd454392ad079816dfa17b25/artifacts
+end_time: 1737642167341
+entry_point_name: ''
+experiment_id: '460503886320050766'
+lifecycle_stage: active
+run_id: b23dde3bdd454392ad079816dfa17b25
+run_name: chill-penguin-49
+run_uuid: b23dde3bdd454392ad079816dfa17b25
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737642152042
+status: 3
+tags: []
+user_id: ramsb
