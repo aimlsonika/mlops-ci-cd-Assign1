@@ -5,4 +5,4 @@ pandas
 optuna
 joblib
 mlflow
-mlflow.sklearn
+model
