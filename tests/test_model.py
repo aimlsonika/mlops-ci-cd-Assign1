@@ -23,10 +23,8 @@ def test_train_model_with_optuna():
     model = joblib.load(model_path)
 
     # Optionally, load the test data to verify accuracy
-    from ..model import preprocess_data
     _, x_test, _, y_test = preprocess_data()
 
     # Evaluate the model
     accuracy = model.score(x_test, y_test)
     assert accuracy > 0.7, f"Model accuracy is too low: {accuracy:.2f}"
-

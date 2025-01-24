@@ -1,3 +1,8 @@
 scikit-learn 
 pytest
 pylint
+pandas
+optuna
+joblib
+mlflow
+mlflow.sklearn
