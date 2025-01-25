@@ -3,7 +3,7 @@ name: CI/CD Workflow with Pylint and Pytest
 on:
   push:
     branches:
-      - main  # Trigger on push to the main branch
+      - main  # Trigger on push to the main branch test
 
 jobs:
   lint:
