@@ -10,7 +10,7 @@ from src.model import train_model_with_optuna, preprocess_data
 def test_train_model_with_optuna():
     """
     Tests the model training function with Optuna hyperparameter tuning.
-    Asserts if the accuracy of the best model on the test data is < 70%.
+    Asserts if the accuracy of the best model on the test data is < 70%...
     """
     # Run the training with Optuna
     train_model_with_optuna()
