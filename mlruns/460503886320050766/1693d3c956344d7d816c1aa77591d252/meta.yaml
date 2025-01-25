@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/ramsb/MLOps/Assignment1/mlops_ci_cd_assign1/mlruns/460503886320050766/1693d3c956344d7d816c1aa77591d252/artifacts
+end_time: 1737832530911
+entry_point_name: ''
+experiment_id: '460503886320050766'
+lifecycle_stage: active
+run_id: 1693d3c956344d7d816c1aa77591d252
+run_name: kindly-perch-741
+run_uuid: 1693d3c956344d7d816c1aa77591d252
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737832522510
+status: 4
+tags: []
+user_id: ramsb
