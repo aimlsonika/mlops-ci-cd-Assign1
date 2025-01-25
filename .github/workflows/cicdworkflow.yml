@@ -48,15 +48,12 @@ jobs:
 
       - name: Set PYTHONPATH
         run: |
-          $env:PYTHONPATH = "$env:PYTHONPATH;$(Get-Location)/src"
+          $env:PYTHONPATH = "$env:PYTHONPATH;$(Get-Location)/tests"
           echo "PYTHONPATH=$env:PYTHONPATH" >> $GITHUB_ENV
 
-      - name: Run Pytest
-        run: pytest tests
-        
       - name: Start MLflow server
         run: |
-          nohup mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlruns --host 0.0.0.0 --port 6000 &
+          nohup mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlruns --host 0.0.0.0 --port 8000 &
   
       - name: Run tests with Pytest
         run: |
