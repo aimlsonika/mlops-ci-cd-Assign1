@@ -25,6 +25,7 @@ jobs:
 
       - name: Run pylint
         run: |
+          export PYTHONPATH=$(pwd)
           pylint **/*.py  # Run pylint on all Python files in the repository
 
   test:
