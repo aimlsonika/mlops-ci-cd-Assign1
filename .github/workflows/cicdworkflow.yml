@@ -46,22 +46,16 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt  # Install dependencies from requirements.txt
 
-      #- name: Set PYTHONPATH
-      #  run: |
-      #    $env:PYTHONPATH = (Get-Location).Path
-      #    pytest tests/*.py
+      - name: Set PYTHONPATH
+        run: echo "PYTHONPATH=$PYTHONPATH:$(Get-Location)/src" >> $GITHUB_ENV
 
       - name: Start MLflow server
         run: |
           nohup mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlruns --host 0.0.0.0 --port 8000 &
-  
-      - name: Debug - List Files
-        run: |
-          Get-ChildItem -Recurse
+
 
       - name: Run tests with Pytest
         run: |
-          $env:PYTHONPATH = (Get-Location).Path
           pytest src/tests --disable-warnings  # Run tests using pytest, stop after first failure
 
   deploy:
