@@ -3,8 +3,8 @@ This script tests a logistic regression model with Optuna on the Diabetes datase
 """
 import sys
 import os
-import joblib
-from model import train_model_with_optuna, preprocess_data
+import joblib 
+from src.tests.test_model import train_model_with_optuna, preprocess_data
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../src')))
 
 def test_train_model_with_optuna():
