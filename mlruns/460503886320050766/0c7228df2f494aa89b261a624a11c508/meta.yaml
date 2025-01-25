@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/ramsb/MLOps/Assignment1/mlops_ci_cd_assign1/mlruns/460503886320050766/0c7228df2f494aa89b261a624a11c508/artifacts
+end_time: 1737782451338
+entry_point_name: ''
+experiment_id: '460503886320050766'
+lifecycle_stage: active
+run_id: 0c7228df2f494aa89b261a624a11c508
+run_name: welcoming-mole-901
+run_uuid: 0c7228df2f494aa89b261a624a11c508
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737782430320
+status: 3
+tags: []
+user_id: ramsb

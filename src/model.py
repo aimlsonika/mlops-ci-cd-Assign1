@@ -1,6 +1,7 @@
 """
 This script trains a logistic regression model on the Diabetes dataset.
 """
+from pathlib import Path
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
@@ -10,7 +11,7 @@ import mlflow
 import mlflow.sklearn
 import joblib
 import optuna
-from pathlib import Path
+
 
 DATA_PATH = Path("data/diabetes.csv")
 

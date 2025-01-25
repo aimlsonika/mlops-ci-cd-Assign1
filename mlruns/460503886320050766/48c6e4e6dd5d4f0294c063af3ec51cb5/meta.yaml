@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/ramsb/MLOps/Assignment1/mlops_ci_cd_assign1/mlruns/460503886320050766/48c6e4e6dd5d4f0294c063af3ec51cb5/artifacts
+end_time: 1737782411681
+entry_point_name: ''
+experiment_id: '460503886320050766'
+lifecycle_stage: active
+run_id: 48c6e4e6dd5d4f0294c063af3ec51cb5
+run_name: luminous-ray-939
+run_uuid: 48c6e4e6dd5d4f0294c063af3ec51cb5
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737782359593
+status: 3
+tags: []
+user_id: ramsb
