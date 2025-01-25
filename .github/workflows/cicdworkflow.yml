@@ -16,7 +16,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'  # Set the Python version
+          python-version: '3.9'  # Set the Python version
 
       - name: Install dependencies
         run: |
@@ -39,7 +39,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'  # Set the Python version
+          python-version: '3.9'  # Set the Python version
 
       - name: Install dependencies
         run: |
