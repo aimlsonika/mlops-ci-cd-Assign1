@@ -48,7 +48,8 @@ jobs:
 
       - name: Set PYTHONPATH
         run: |
-          echo "PYTHONPATH=$(pwd)/src" >> $GITHUB_ENV
+          $env:PYTHONPATH = (Get-Location).Path
+          pytest tests/*.py
 
       - name: Start MLflow server
         run: |
