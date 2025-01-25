@@ -71,9 +71,15 @@ def diabetes_prediction():
     except KeyError as key_error:
         return jsonify({"error": f"Missing key in input: {str(key_error)}"}), 400
 
-    except Exception as general_error:  # Retained as a last resort
-        return jsonify({"error": f"An unexpected error occurred: {str(general_error)}"}), 500
+    except pd.errors.EmptyDataError:
+        return jsonify({"error": "The input data is empty or invalid."}), 400
 
+    except joblib.externals.loky.process_executor.BrokenProcessPool as model_error:
+        return jsonify({"error": f"Model loading or prediction failed: {str(model_error)}"}), 500
+
+    except Exception as general_error:
+        # Use as a last resort and provide a justification
+        return jsonify({"error": f"An unexpected error occurred: {str(general_error)}"}), 500
 
 if __name__ == '__main__':
     app.run(debug=False, host="127.0.0.1", port=5000)

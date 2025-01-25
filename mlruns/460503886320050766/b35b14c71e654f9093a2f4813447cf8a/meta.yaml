@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/ramsb/MLOps/Assignment1/mlops_ci_cd_assign1/mlruns/460503886320050766/b35b14c71e654f9093a2f4813447cf8a/artifacts
+end_time: 1737773428248
+entry_point_name: ''
+experiment_id: '460503886320050766'
+lifecycle_stage: active
+run_id: b35b14c71e654f9093a2f4813447cf8a
+run_name: mercurial-pig-43
+run_uuid: b35b14c71e654f9093a2f4813447cf8a
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737773411192
+status: 3
+tags: []
+user_id: ramsb

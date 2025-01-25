@@ -10,15 +10,16 @@ import mlflow
 import mlflow.sklearn
 import joblib
 import optuna
+from pathlib import Path
+
+DATA_PATH = Path("data/diabetes.csv")
 
 def preprocess_data():
     """
     Load and preprocess the Diabetes dataset.
-    Returns:
-        x_train, x_test, y_train, y_test: Preprocessed training and test data.
+    Returns Preprocessed training and test data.
     """
-    data = pd.read_csv('C:\\Users\\ramsb\\MLOps\\Assignment1\
-        \\mlops_ci_cd_assign1\\data\\diabetes.csv')
+    data = pd.read_csv(DATA_PATH)
     x = data.drop('Outcome', axis=1)
     y = data['Outcome']
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)
