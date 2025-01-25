@@ -71,6 +71,9 @@ def diabetes_prediction():
     except pd.errors.EmptyDataError:
         logging.error("Received empty data.")
         return jsonify({"error": "Input data is empty."}), 400
+    except FileNotFoundError as e:
+        logging.error("File not found: %s", e)
+        return jsonify({"error": "File not found."}), 404
     except ValueError as e:
         logging.error("Value error during prediction: %s",e)
         return jsonify({"error": "Invalid data provided: %s"},e), 400
