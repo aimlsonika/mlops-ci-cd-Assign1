@@ -6,10 +6,12 @@ This is a Flask application for diabetes prediction.
 import pandas as pd
 from flask import Flask, request, jsonify
 import joblib
+import warnings
 from sklearn.utils import validation
 
 # Suppress sklearn pickle warning
-validation._IS_DEPRECATED_PICKLE = True
+#validation._IS_DEPRECATED_PICKLE = True
+warnings.filterwarnings("ignore", message=".*_IS_DEPRECATED_PICKLE.*")
 
 # Initialize Flask application
 app = Flask(__name__)
