@@ -7,8 +7,15 @@ to run the project.
 from setuptools import setup, find_packages
 
 setup(
-    name="mlops_assignment",
+    name="mlops_ci_cd_assign1",
     version="0.1",
-    packages=find_packages(where="src"),
-    package_dir={"": "src"},
+    packages=find_packages(),
+    install_requires=[
+        "pandas",
+        "scikit-learn",
+        "optuna",
+        "joblib",
+        "mlflow",
+    ],
 )
+

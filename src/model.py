@@ -3,6 +3,7 @@ This script trains a logistic regression model on the Diabetes dataset.
 """
 from pathlib import Path
 import pandas as pd
+import os
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.linear_model import LogisticRegression
@@ -11,16 +12,16 @@ import mlflow
 import mlflow.sklearn
 import joblib
 import optuna
-
-
-DATA_PATH = Path("data/diabetes.csv")
+#DATA_PATH = Path("../data/diabetes.csv")
 
 def preprocess_data():
     """
     Load and preprocess the Diabetes dataset.
     Returns Preprocessed training and test data.
     """
-    data = pd.read_csv(DATA_PATH)
+    file_path = os.path.join(os.path.dirname(__file__), '..', 'data', 'diabetes.csv')
+    data = pd.read_csv(os.path.abspath(file_path))
+    #data = pd.read_csv(DATA_PATH)
     x = data.drop('Outcome', axis=1)
     y = data['Outcome']
     x_train, x_test, y_train, y_test = train_test_split(x, y, test_size=0.2, random_state=42)

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/ramsb/MLOps/Assignment1/mlops_ci_cd_assign1/mlruns/460503886320050766/d9464c060ada42ea8be2405e31a1b089/artifacts
+end_time: 1737787702563
+entry_point_name: ''
+experiment_id: '460503886320050766'
+lifecycle_stage: active
+run_id: d9464c060ada42ea8be2405e31a1b089
+run_name: bedecked-ape-239
+run_uuid: d9464c060ada42ea8be2405e31a1b089
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737787655350
+status: 3
+tags: []
+user_id: ramsb

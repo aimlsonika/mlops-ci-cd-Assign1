@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/ramsb/MLOps/Assignment1/mlops_ci_cd_assign1/mlruns/460503886320050766/903de1be2b5b4f118aab756b2af5f5a8/artifacts
+end_time: 1737789707537
+entry_point_name: ''
+experiment_id: '460503886320050766'
+lifecycle_stage: active
+run_id: 903de1be2b5b4f118aab756b2af5f5a8
+run_name: gifted-finch-600
+run_uuid: 903de1be2b5b4f118aab756b2af5f5a8
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737789662499
+status: 3
+tags: []
+user_id: ramsb

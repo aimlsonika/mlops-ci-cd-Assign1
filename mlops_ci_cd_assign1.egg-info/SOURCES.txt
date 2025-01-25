@@ -1,0 +1,10 @@
+setup.py
+mlops_ci_cd_assign1.egg-info/PKG-INFO
+mlops_ci_cd_assign1.egg-info/SOURCES.txt
+mlops_ci_cd_assign1.egg-info/dependency_links.txt
+mlops_ci_cd_assign1.egg-info/requires.txt
+mlops_ci_cd_assign1.egg-info/top_level.txt
+src/__init__.py
+src/model.py
+tests/__init__.py
+tests/test_model.py

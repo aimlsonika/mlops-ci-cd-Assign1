@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: mlops_ci_cd_assign1
+Version: 0.1
+Requires-Dist: pandas
+Requires-Dist: scikit-learn
+Requires-Dist: optuna
+Requires-Dist: joblib
+Requires-Dist: mlflow

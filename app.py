@@ -80,7 +80,7 @@ def diabetes_prediction():
         logging.error("Value error during prediction: %s",e)
         raise
         #return jsonify({"error": "Invalid data provided: %s"},e), 400
-    except Exception as e:
+    except Exception as e:  # pylint: disable=W0718
         logging.error("Unexpected error: %s",e)
         raise
         #return jsonify({"error": "An unexpected error occurred."}), 500

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/ramsb/MLOps/Assignment1/mlops_ci_cd_assign1/mlruns/460503886320050766/a06d29b7d2534d36b3ab90d9bd5bb0cf/artifacts
+end_time: 1737789738284
+entry_point_name: ''
+experiment_id: '460503886320050766'
+lifecycle_stage: active
+run_id: a06d29b7d2534d36b3ab90d9bd5bb0cf
+run_name: caring-bear-145
+run_uuid: a06d29b7d2534d36b3ab90d9bd5bb0cf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737789707930
+status: 3
+tags: []
+user_id: ramsb
