@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main  # Trigger on push to the main branch
-  pull_request:
-    branches:
-      - main  # Trigger on pull requests to the main branch
 
 jobs:
   lint:
@@ -49,13 +46,33 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt  # Install dependencies from requirements.txt
 
+      - name: Set PYTHONPATH
+        run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)/src" >> $GITHUB_ENV
+      - name: Set environment variables
+        run: |
+          echo "DATA_FILE_PATH=$(pwd)/data/diabetes.csv" >> $GITHUB_ENV
+          echo "PKL_FILE_PATH=$(pwd)/modelfinal_best.joblib" >> $GITHUB_ENV
+      - name: Start MLflow server
+        run: |
+          nohup mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlruns --host 0.0.0.0 --port 6000 &
+  
       - name: Run tests with Pytest
         run: |
-          pytest --maxfail=1 --disable-warnings -q  # Run tests using pytest, stop after first failure
+          pytest tests  # Run tests using pytest, stop after first failure
+
   deploy:
     runs-on: windows-latest
     needs: test
+
     steps:
-      - name: Deploy the model (Save artifacts or deploy to API)
-        run: |
-          echo "Deploying the model"        
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Log in to Docker Hub
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+    - name: Build Docker image
+      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/joblib-diabetes:latest .
+
+    - name: Push Docker image
+      run: docker push ${{ secrets.DOCKER_USERNAME }}/joblib-diabetes:latest
