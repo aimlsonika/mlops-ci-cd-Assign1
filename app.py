@@ -26,6 +26,13 @@ except joblib.externals.loky.process_executor.TerminatedWorkerError as e:
     logging.error("Error loading model: %s",e)
     raise
 
+@app.route('/test', methods=['GET'])
+def diabetes_test():
+    """
+    Endpoint to predict diabetes based on user input.
+    """
+    return "123"
+
 @app.route('/diabetes_prediction', methods=['POST'])
 def diabetes_prediction():
     """
@@ -88,7 +95,7 @@ def diabetes_prediction():
 if __name__ == "__main__":
     try:
         logging.info("Starting Flask app...")
-        app.run(debug=False, host="127.0.0.1", port=5000)
+        app.run(debug=True, host="127.0.0.1", port=5001)
     except Exception as e:
         logging.error("Failed to start Flask app: %s",e)
         raise

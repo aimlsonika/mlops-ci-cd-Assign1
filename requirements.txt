@@ -5,3 +5,4 @@ pandas
 optuna
 joblib
 mlflow
+flask

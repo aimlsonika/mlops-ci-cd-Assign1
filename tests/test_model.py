@@ -1,11 +1,11 @@
 """
 This script tests a logistic regression model with Optuna on the Diabetes dataset.
 """
-import sys
+#import sys
 import os
 import joblib
-from mlops_ci_cd_assign1.src.model import train_model_with_optuna, preprocess_data
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from src.model import train_model_with_optuna, preprocess_data
+#sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 def test_train_model_with_optuna():
     """

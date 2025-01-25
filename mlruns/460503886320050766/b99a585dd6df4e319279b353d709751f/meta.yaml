@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/ramsb/MLOps/Assignment1/mlops_ci_cd_assign1/mlruns/460503886320050766/b99a585dd6df4e319279b353d709751f/artifacts
+end_time: 1737799934415
+entry_point_name: ''
+experiment_id: '460503886320050766'
+lifecycle_stage: active
+run_id: b99a585dd6df4e319279b353d709751f
+run_name: unleashed-horse-935
+run_uuid: b99a585dd6df4e319279b353d709751f
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737799914773
+status: 3
+tags: []
+user_id: ramsb

@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/ramsb/MLOps/Assignment1/mlops_ci_cd_assign1/mlruns/460503886320050766/083d678faf654d37ae0fe0379f1bc445/artifacts
+end_time: 1737794886224
+entry_point_name: ''
+experiment_id: '460503886320050766'
+lifecycle_stage: active
+run_id: 083d678faf654d37ae0fe0379f1bc445
+run_name: agreeable-conch-478
+run_uuid: 083d678faf654d37ae0fe0379f1bc445
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737794872975
+status: 3
+tags: []
+user_id: ramsb

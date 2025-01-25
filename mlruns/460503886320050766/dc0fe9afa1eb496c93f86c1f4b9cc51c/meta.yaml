@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/ramsb/MLOps/Assignment1/mlops_ci_cd_assign1/mlruns/460503886320050766/dc0fe9afa1eb496c93f86c1f4b9cc51c/artifacts
+end_time: 1737799948575
+entry_point_name: ''
+experiment_id: '460503886320050766'
+lifecycle_stage: active
+run_id: dc0fe9afa1eb496c93f86c1f4b9cc51c
+run_name: serious-snipe-609
+run_uuid: dc0fe9afa1eb496c93f86c1f4b9cc51c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737799934564
+status: 3
+tags: []
+user_id: ramsb
