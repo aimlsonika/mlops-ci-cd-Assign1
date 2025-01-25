@@ -1,17 +1,16 @@
 """
 This is a Flask application for predicting diabetes based on input data.
 """
-
+import logging
 import warnings
 import pandas as pd
 from flask import Flask, request, jsonify
 import joblib
-import logging
 from sklearn.utils import validation
 
 # Suppress warnings and configure logging
-warnings.filterwarnings("ignore", category=FutureWarning)
-validation._IS_DEPRECATED_PICKLE = True  # Suppress sklearn pickle warning
+# Suppress sklearn deprecation warnings
+warnings.filterwarnings("ignore", message=".*_IS_DEPRECATED_PICKLE.*")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 # Initialize Flask application
@@ -25,7 +24,7 @@ except FileNotFoundError:
     logging.error("Model file not found. Please ensure the model file is in the specified path.")
     raise
 except joblib.externals.loky.process_executor.TerminatedWorkerError as e:
-    logging.error(f"Error loading model: {e}")
+    logging.error("Error loading model: %s",e)
     raise
 
 @app.route('/diabetes_prediction', methods=['POST'])
@@ -37,8 +36,8 @@ def diabetes_prediction():
         # Parse input data
         data = request.json
         if not data or "data" not in data:
-            return jsonify({"error": "Invalid input. Please provide data in JSON format."}), 400
-        
+            return jsonify({"error": "Invalid input. \
+                            Please provide data in JSON format."}), 400
         # Create a DataFrame from the input data
         df = pd.DataFrame(data["data"])
 
@@ -46,8 +45,8 @@ def diabetes_prediction():
         required_columns = ['Pregnancies', 'Glucose', 'BloodPressure', 'SkinThickness',
                             'Insulin', 'BMI', 'DiabetesPedigreeFunction', 'Age']
         if not all(column in df.columns for column in required_columns):
-            return jsonify({"error": f"Missing required columns. Expected: {required_columns}"}), 400
-        
+            return jsonify({"error": "Missing required columns. \
+                            Expected: %s"},required_columns), 400
         # Convert data types to match the model's requirements
         df = df[required_columns]
         df = df.astype({
@@ -74,10 +73,10 @@ def diabetes_prediction():
         logging.error("Received empty data.")
         return jsonify({"error": "Input data is empty."}), 400
     except ValueError as e:
-        logging.error(f"Value error during prediction: {e}")
-        return jsonify({"error": f"Invalid data provided: {e}"}), 400
+        logging.error("Value error during prediction: %s",e)
+        return jsonify({"error": "Invalid data provided: %s"},e), 400
     except Exception as e:
-        logging.error(f"Unexpected error: {e}")
+        logging.error("Unexpected error: %s",e)
         return jsonify({"error": "An unexpected error occurred."}), 500
 
 if __name__ == "__main__":
@@ -85,7 +84,7 @@ if __name__ == "__main__":
         logging.info("Starting Flask app...")
         app.run(debug=False, host="127.0.0.1", port=5000)
     except Exception as e:
-        logging.error(f"Failed to start Flask app: {e}")
+        logging.error("Failed to start Flask app: %s",e)
         raise
 
 '''
@@ -102,8 +101,7 @@ import pandas as pd
 from flask import Flask, request, jsonify
 import joblib
 
-# Suppress sklearn deprecation warnings
-warnings.filterwarnings("ignore", message=".*_IS_DEPRECATED_PICKLE.*")
+
 
 # Initialize Flask application
 app = Flask(__name__)
