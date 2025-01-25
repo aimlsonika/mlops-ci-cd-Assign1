@@ -50,8 +50,8 @@ jobs:
         run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)/src" >> $GITHUB_ENV
       - name: Set environment variables
         run: |
-        echo "DATA_FILE_PATH=$(pwd)/data/diabetes.csv" >> $GITHUB_ENV
-        echo "JOBLIB_FILE_PATH=$(pwd)/modelfinal_best.joblib" >> $GITHUB_ENV
+          echo "DATA_FILE_PATH=$(pwd)/data/diabetes.csv" >> $GITHUB_ENV
+          echo "JOBLIB_FILE_PATH=$(pwd)/modelfinal_best.joblib" >> $GITHUB_ENV
 
       - name: Start MLflow server
         run: |
