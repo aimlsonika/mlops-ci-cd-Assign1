@@ -3,75 +3,53 @@ name: CI/CD Workflow with Pylint and Pytest
 on:
   push:
     branches:
-      - main  # Trigger on push to the main branch test
+      - main
 
 jobs:
   lint:
-    runs-on: windows-latest  # Specify the OS to run the job
+    runs-on: windows-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2  # Checkout the repository code
+        uses: actions/checkout@v2
 
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'  # Set the Python version
+          python-version: '3.9'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt  # Install pylint for linting
+          pip install -r requirements.txt
 
       - name: Run pylint
         run: |
           $env:PYTHONPATH = (Get-Location).Path
-          pylint **/*.py || true  # Lint all Python files in the repository
+          pylint **/*.py
 
   test:
-    runs-on: windows-latest  # Specify the OS to run the job
-    needs: lint  # Ensure linting completes before running tests
+    runs-on: windows-latest
+    needs: lint
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2  # Checkout the repository code
+        uses: actions/checkout@v2
 
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'  # Set the Python version
+          python-version: '3.9'
 
-      - name: Install dependencies for test
+      - name: Install dependencies for tests
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt  # Install dependencies from requirements.txt
+          pip install -r requirements.txt
 
       - name: Set PYTHONPATH
         run: |
-          echo "PYTHONPATH=$(Get-Location)/src" >> $env:GITHUB_ENV
-
-      - name: Start MLflow server
-        run: |
-          nohup mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlruns --host 0.0.0.0 --port 8000 &
-
+          echo "PYTHONPATH=$(pwd)/src" >> $env:GITHUB_ENV
 
       - name: Run tests with Pytest
         run: |
-          pytest src/tests --disable-warnings  # Run tests using pytest, stop after first failure
-
-  deploy:
-    runs-on: windows-latest
-    needs: test
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-
-    - name: Log in to Docker Hub
-      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-
-    - name: Build Docker image
-      run: docker build -t ${{ secrets.DOCKER_USERNAME }}/joblib-diabetes:latest .
-
-    - name: Push Docker image
-      run: docker push ${{ secrets.DOCKER_USERNAME }}/joblib-diabetes:latest
+          pytest src/tests --disable-warnings
