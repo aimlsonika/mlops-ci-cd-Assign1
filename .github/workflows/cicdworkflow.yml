@@ -62,7 +62,7 @@ jobs:
       - name: Run tests with Pytest
         run: |
           $env:PYTHONPATH = (Get-Location).Path
-          pytest ./tests --disable-warnings  # Run tests using pytest, stop after first failure
+          pytest src/tests --disable-warnings  # Run tests using pytest, stop after first failure
 
   deploy:
     runs-on: windows-latest
