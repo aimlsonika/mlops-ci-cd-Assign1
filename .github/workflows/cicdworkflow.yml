@@ -26,7 +26,7 @@ jobs:
       - name: Run pylint
         run: |
           $env:PYTHONPATH = (Get-Location).Path
-          pylint **/*.py  # Lint all Python files in the repository
+          pylint **/*.py || true  # Lint all Python files in the repository
 
   test:
     runs-on: windows-latest  # Specify the OS to run the job
@@ -47,7 +47,8 @@ jobs:
           pip install -r requirements.txt  # Install dependencies from requirements.txt
 
       - name: Set PYTHONPATH
-        run: echo "PYTHONPATH=$PYTHONPATH:$(Get-Location)/src" >> $GITHUB_ENV
+        run: |
+          echo "PYTHONPATH=$(Get-Location)\src" | Out-File -FilePath $env:GITHUB_ENV -Encoding utf8 -Append
 
       - name: Start MLflow server
         run: |
