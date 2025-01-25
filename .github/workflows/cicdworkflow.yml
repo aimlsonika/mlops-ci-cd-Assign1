@@ -48,8 +48,7 @@ jobs:
 
       - name: Set PYTHONPATH
         run: |
-          $env:PYTHONPATH = "$(Get-Location)/src"
-          echo "PYTHONPATH=$env:PYTHONPATH" >> $GITHUB_ENV
+          echo "PYTHONPATH=$(pwd)/src" >> $GITHUB_ENV
 
       - name: Start MLflow server
         run: |
