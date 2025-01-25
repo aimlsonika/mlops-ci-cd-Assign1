@@ -57,6 +57,7 @@ jobs:
   
       - name: Run tests with Pytest
         run: |
+          $env:PYTHONPATH = (Get-Location).Path
           pytest tests  # Run tests using pytest, stop after first failure
 
   deploy:
