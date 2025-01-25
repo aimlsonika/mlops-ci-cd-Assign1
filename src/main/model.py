@@ -17,7 +17,7 @@ def preprocess_data():
     Load and preprocess the Diabetes dataset.
     Returns Preprocessed training and test data.
     """
-    file_path = os.path.join(os.path.dirname(__file__),'..', 'data', 'diabetes.csv')
+    file_path = os.path.join(os.path.dirname(__file__),'..','..','data', 'diabetes.csv')
     #data = pd.read_csv('C:\\Users\\ramsb\\MLOps\\Assignment1\\ \
      #                  mlops_ci_cd_assign1\\data\\diabetes.csv')
     data = pd.read_csv(os.path.abspath(file_path))
