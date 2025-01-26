@@ -95,7 +95,7 @@ def diabetes_prediction():
 if __name__ == "__main__":
     try:
         logging.info("Starting Flask app...")
-        app.run(debug=True, host="127.0.0.1", port=5001)
+        app.run(debug=True, host="0.0.0.0", port=5001)
     except Exception as e:
         logging.error("Failed to start Flask app: %s",e)
         raise
