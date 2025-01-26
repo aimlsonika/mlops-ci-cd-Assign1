@@ -70,15 +70,13 @@ jobs:
 
       - name: Start MLflow Server
         run: |
-          mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlruns --host 127.0.0.1 --port 5001 > mlflow_server.log 2>&1 &
-          tail -f mlflow_server.log
-
+          Start-Process mlflow -ArgumentList 'server', '--backend-store-uri', 'sqlite:///mlflow.db', '--default-artifact-root', './mlruns', '--host', '127.0.0.1', '--port', '5001' -NoNewWindow -PassThru | Out-Null
 
       - name: Wait for MLflow server to be ready
         run: |
           $url = "http://127.0.0.1:5001/api/2.0/mlflow/experiments/list"
           $isReady = $false
-          $maxRetries = 3  # Set the maximum retries (for example, 30)
+          $maxRetries = 3  # Increase max retries to 10
           $retryCount = 0
           while (-not $isReady -and $retryCount -lt $maxRetries) {
             try {
@@ -88,7 +86,7 @@ jobs:
             catch {
               Write-Host "Waiting for MLflow server to start... Attempt $($retryCount+1) of $maxRetries"
               $retryCount++
-              Start-Sleep -Seconds 5
+              Start-Sleep -Seconds 10  # Increase delay to 10 seconds between retries
             }
           }
 
@@ -96,7 +94,7 @@ jobs:
             Write-Host "MLflow server is still not available after $maxRetries attempts."
             exit 1  # Exit with error code if the server is not ready after max retries
           }
-
+          Write-Host "MLflow server is ready."
 
       - name: Verify Python and MLflow installation
         run: |
