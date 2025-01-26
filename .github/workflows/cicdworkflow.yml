@@ -31,6 +31,7 @@ jobs:
   test:
     runs-on: windows-latest
     needs: lint
+    if: ${{ github.event.inputs.skip_tests != 'true' }}  # Only run tests if skip_tests is not true
 
     steps:
       - name: Checkout code
