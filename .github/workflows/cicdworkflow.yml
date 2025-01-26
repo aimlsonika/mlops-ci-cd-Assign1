@@ -77,16 +77,25 @@ jobs:
         run: |
           $url = "http://127.0.0.1:5001/api/2.0/mlflow/experiments/list"
           $isReady = $false
-          while (-not $isReady) {
+          $maxRetries = 3  # Set the maximum retries (for example, 30)
+          $retryCount = 0
+          while (-not $isReady -and $retryCount -lt $maxRetries) {
             try {
               $response = Invoke-RestMethod -Uri $url -Method Get -ErrorAction Stop
               $isReady = $true
             }
             catch {
-              Write-Host "Waiting for MLflow server to start..."
+              Write-Host "Waiting for MLflow server to start... Attempt $($retryCount+1) of $maxRetries"
+              $retryCount++
               Start-Sleep -Seconds 5
             }
           }
+
+          if (-not $isReady) {
+            Write-Host "MLflow server is still not available after $maxRetries attempts."
+            exit 1  # Exit with error code if the server is not ready after max retries
+          }
+
 
       - name: Verify Python and MLflow installation
         run: |
