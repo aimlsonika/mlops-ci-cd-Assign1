@@ -116,6 +116,10 @@ jobs:
             Write-Host "MLflow log file not found."
           }
 
+      - name: Check if MLflow is running
+        run: |
+          netstat -an | findstr "5001"
+
       - name: Run tests with PYTHONPATH
         run: |
           $env:PYTHONPATH = "$(Get-Location)\src"
