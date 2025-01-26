@@ -97,5 +97,5 @@ if __name__ == "__main__":
         logging.info("Starting Flask app...")
         app.run(debug=True, host="0.0.0.0", port=5001)
     except Exception as e:
-        logging.error("Failed to start Flask app: %s",e)
+        logging.error("Failed to start Flask app : %s",e)
         raise
