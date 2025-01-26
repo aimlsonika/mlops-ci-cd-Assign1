@@ -68,6 +68,28 @@ jobs:
       #  run: |
       #    nohup mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlruns --host 0.0.0.0 --port 8000 &
 
+      - name: Start MLflow server
+        run: |
+          mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlruns --host 127.0.0.1 --port 5001 &
+          sleep 10  # Wait for server to start
+
+      - name: Wait for MLflow server to be ready
+        run: |
+          while ! curl -s http://127.0.0.1:5001/api/2.0/mlflow/experiments/list > /dev/null; do
+            echo "Waiting for MLflow server to start..."
+            sleep 5
+          done  
+
+      - name: Verify Python and MLflow installation
+        run: |
+          python --version
+          pip show mlflow
+
+      - name: Create mlruns folder if not exists
+        run: |
+          if (-not (Test-Path "./mlruns")) {
+            New-Item -ItemType Directory -Path "./mlruns"
+            }
       - name: Run tests with PYTHONPATH
         run: |
           $env:PYTHONPATH = "$(Get-Location)\src"
