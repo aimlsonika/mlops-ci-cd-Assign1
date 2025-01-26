@@ -75,14 +75,14 @@ jobs:
 #            New-Item -ItemType Directory -Path "./mlruns"
 #            }
 
-      - name: Start MLflow server
-        run: |
-          nohup mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlruns --host localhost --port 5001
+      #- name: Start MLflow server
+      #  run: |
+      #    nohup mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlruns --host 0.0.0.0 --port 8000 &
 
-      - name: Start MLflow Server on port 5001
+      - name: Start MLflow Server on a different port
         run: |
-          Start-Process mlflow -ArgumentList 'server', '--backend-store-uri', 'sqlite:///mlflow.db', '--default-artifact-root', './mlruns', '--host', 'localhost', '--port', '5001' -NoNewWindow -PassThru | Out-File -Append mlflow_server.log
-          Start-Sleep -Seconds 10  # Wait for 10 seconds before checking
+          Start-Process mlflow -ArgumentList 'server', '--backend-store-uri', 'sqlite:///mlflow.db', '--default-artifact-root', './mlruns', '--host', '127.0.0.1', '--port', '5001' -NoNewWindow -PassThru | Out-File -Append mlflow_server.log
+          Start-Sleep -Seconds 5  # Ensure we give it time to initialize before checking
 
       - name: Wait for MLflow server to be ready
         run: |
