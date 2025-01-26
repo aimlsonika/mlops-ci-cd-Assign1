@@ -105,7 +105,7 @@ jobs:
           if (-not $isReady) {
             Write-Host "MLflow server is still not available after $maxRetries attempts."
           }
-          Write-Host "MLflow server is ready."
+          #Write-Host "MLflow server is ready."
 
       - name: Check MLflow logs
         run: |
@@ -118,6 +118,21 @@ jobs:
       - name: Check if MLflow is running
         run: |
           netstat -an | Select-String "500"
+
+      - name: Check MLflow server response
+        run: |
+          python -c "
+          import requests
+
+          url = 'http://127.0.0.1:5001/api/2.0/mlflow/experiments/list'
+          try:
+              response = requests.get(url)
+              print(f'Status Code: {response.status_code}')
+              print(f'Response Body: {response.text}')
+          except requests.exceptions.RequestException as e:
+              print(f'Error: {e}')
+              exit(1)
+          "          
 
       - name: Run tests with PYTHONPATH
         run: |
