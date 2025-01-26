@@ -108,6 +108,14 @@ jobs:
 #          }
 #          Write-Host "MLflow server is ready."
 
+      - name: Check MLflow logs
+        run: |
+          if (Test-Path mlflow_server.log) {
+            Get-Content mlflow_server.log | Select-Object -Last 20
+          } else {
+            Write-Host "MLflow log file not found."
+          }
+
       - name: Run tests with PYTHONPATH
         run: |
           $env:PYTHONPATH = "$(Get-Location)\src"
