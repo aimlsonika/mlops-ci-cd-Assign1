@@ -84,41 +84,41 @@ jobs:
           Start-Process mlflow -ArgumentList 'server', '--backend-store-uri', 'sqlite:///mlflow.db', '--default-artifact-root', './mlruns', '--host', '127.0.0.1', '--port', '5001' -NoNewWindow -PassThru | Out-File -Append mlflow_server.log
           Start-Sleep -Seconds 5  # Ensure we give it time to initialize before checking
 
-#      - name: Wait for MLflow server to be ready
-#        run: |
-#          $url = "http://127.0.0.1:5001/api/2.0/mlflow/experiments/list"
-#          $isReady = $false
-#          $maxRetries = 5  # Increase the retries to 20
-#          $retryCount = 0
-#          while (-not $isReady -and $retryCount -lt $maxRetries) {
-#            try {
-#              $response = Invoke-RestMethod -Uri $url -Method Get -ErrorAction Stop
-#              $isReady = $true
-#            }
-#            catch {
-#              Write-Host "Waiting for MLflow server to start... Attempt $($retryCount+1) of $maxRetries"
-#              $retryCount++
-#              Start-Sleep -Seconds 15  # Increase sleep time between retries to 15 seconds
-#            }
-#          }
+      - name: Wait for MLflow server to be ready
+        run: |
+          $url = "http://127.0.0.1:5001/api/2.0/mlflow/experiments/list"
+          $isReady = $false
+          $maxRetries = 5  # Increase the retries to 20
+          $retryCount = 0
+          while (-not $isReady -and $retryCount -lt $maxRetries) {
+            try {
+              $response = Invoke-RestMethod -Uri $url -Method Get -ErrorAction Stop
+              $isReady = $true
+            }
+            catch {
+              Write-Host "Waiting for MLflow server to start... Attempt $($retryCount+1) of $maxRetries"
+              $retryCount++
+              Start-Sleep -Seconds 15  # Increase sleep time between retries to 15 seconds
+            }
+          }
 
-#          if (-not $isReady) {
-#            Write-Host "MLflow server is still not available after $maxRetries attempts."
-#            exit 1  # Exit with error code if the server is not ready after max retries
-#          }
-#          Write-Host "MLflow server is ready."
+          if (-not $isReady) {
+            Write-Host "MLflow server is still not available after $maxRetries attempts."
+            exit 1  # Exit with error code if the server is not ready after max retries
+          }
+          Write-Host "MLflow server is ready."
 
       - name: Check MLflow logs
         run: |
           if (Test-Path mlflow_server.log) {
-            Get-Content mlflow_server.log | Select-Object -Last 20
+            Get-Content mlflow_server.log | Select-Object -Last 50
           } else {
             Write-Host "MLflow log file not found."
           }
 
       - name: Check if MLflow is running
         run: |
-          netstat -an | Select-String "5001"
+          netstat -an | Select-String "500"
 
       - name: Run tests with PYTHONPATH
         run: |
