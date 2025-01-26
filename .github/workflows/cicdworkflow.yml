@@ -75,10 +75,18 @@ jobs:
 
       - name: Wait for MLflow server to be ready
         run: |
-          while ! curl -s http://127.0.0.1:5001/api/2.0/mlflow/experiments/list > /dev/null; do
-            echo "Waiting for MLflow server to start..."
-            sleep 5
-          done  
+          $url = "http://127.0.0.1:5001/api/2.0/mlflow/experiments/list"
+          $isReady = $false
+          while (-not $isReady) {
+            try {
+              $response = Invoke-RestMethod -Uri $url -Method Get -ErrorAction Stop
+              $isReady = $true
+            }
+            catch {
+              Write-Host "Waiting for MLflow server to start..."
+              Start-Sleep -Seconds 5
+            }
+          }
 
       - name: Verify Python and MLflow installation
         run: |
