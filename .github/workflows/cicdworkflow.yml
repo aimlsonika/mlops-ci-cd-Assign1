@@ -118,7 +118,7 @@ jobs:
 
       - name: Check if MLflow is running
         run: |
-          netstat -an | findstr "5001"
+          netstat -an | Select-String "5001"
 
       - name: Run tests with PYTHONPATH
         run: |
