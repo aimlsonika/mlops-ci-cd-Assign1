@@ -68,15 +68,16 @@ jobs:
       #  run: |
       #    nohup mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlruns --host 0.0.0.0 --port 8000 &
 
-      - name: Start MLflow Server
+      - name: Start MLflow Server on a different port
         run: |
-          Start-Process mlflow -ArgumentList 'server', '--backend-store-uri', 'sqlite:///mlflow.db', '--default-artifact-root', './mlruns', '--host', '127.0.0.1', '--port', '5001' -NoNewWindow -PassThru | Out-Null
+          Start-Process mlflow -ArgumentList 'server', '--backend-store-uri', 'sqlite:///mlflow.db', '--default-artifact-root', './mlruns', '--host', '127.0.0.1', '--port', '5002' -NoNewWindow -PassThru | Out-File -Append mlflow_server.log
+          Start-Sleep -Seconds 5  # Ensure we give it time to initialize before checking
 
       - name: Wait for MLflow server to be ready
         run: |
-          $url = "http://127.0.0.1:5001/api/2.0/mlflow/experiments/list"
+          $url = "http://127.0.0.1:5002/api/2.0/mlflow/experiments/list"
           $isReady = $false
-          $maxRetries = 3  # Increase max retries to 10
+          $maxRetries = 5  # Increase the retries to 20
           $retryCount = 0
           while (-not $isReady -and $retryCount -lt $maxRetries) {
             try {
@@ -86,7 +87,7 @@ jobs:
             catch {
               Write-Host "Waiting for MLflow server to start... Attempt $($retryCount+1) of $maxRetries"
               $retryCount++
-              Start-Sleep -Seconds 10  # Increase delay to 10 seconds between retries
+              Start-Sleep -Seconds 15  # Increase sleep time between retries to 15 seconds
             }
           }
 
