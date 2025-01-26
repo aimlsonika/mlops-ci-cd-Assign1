@@ -81,12 +81,12 @@ jobs:
 
       - name: Start MLflow Server on a different port
         run: |
-          Start-Process mlflow -ArgumentList 'server', '--backend-store-uri', 'sqlite:///mlflow.db', '--default-artifact-root', './mlruns', '--host', '127.0.0.1', '--port', '5002' -NoNewWindow -PassThru | Out-File -Append mlflow_server.log
+          Start-Process mlflow -ArgumentList 'server', '--backend-store-uri', 'sqlite:///mlflow.db', '--default-artifact-root', './mlruns', '--host', '127.0.0.1', '--port', '5001' -NoNewWindow -PassThru | Out-File -Append mlflow_server.log
           Start-Sleep -Seconds 5  # Ensure we give it time to initialize before checking
 
 #      - name: Wait for MLflow server to be ready
 #        run: |
-#          $url = "http://127.0.0.1:5002/api/2.0/mlflow/experiments/list"
+#          $url = "http://127.0.0.1:5001/api/2.0/mlflow/experiments/list"
 #          $isReady = $false
 #          $maxRetries = 5  # Increase the retries to 20
 #          $retryCount = 0
