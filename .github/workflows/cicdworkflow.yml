@@ -59,4 +59,4 @@ jobs:
       - name: Run tests with PYTHONPATH
         run: |
           $env:PYTHONPATH = "$(Get-Location)\src"
-          pytest src/tests --disable-warnings
+          pytest src/tests --disable-warning
