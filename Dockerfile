@@ -11,7 +11,7 @@ COPY . /app/
 # Install required Python packages
 RUN pip install -r requirements.txt
 
-# Expose the application port
+# Expose the application ports
 EXPOSE 5001
 
 # Run the Flask application
